@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Chat from "./Chat";
 import Home from "./Home";
 import "./App.css";
+import Footer from "./Footer";
 
 export const App = () => {
   return (

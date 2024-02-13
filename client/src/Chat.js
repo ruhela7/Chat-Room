@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import Message from "./Message";
+import Message from "./Message.js";
 import { useLocation, useNavigate } from "react-router-dom";
+import Footer from "./Footer.js";
 
 const socket = io("http://localhost:5000");
 
@@ -63,7 +64,9 @@ function App() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
+    
   );
 }
 

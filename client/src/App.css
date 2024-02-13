@@ -15,7 +15,7 @@
     border: 1px solid red;
     border-radius: 2px;
     background-color: rgb(102, 225, 236);
-    height: 200px;
+    height: 400px;
     width: 400px;
     margin: auto;
     display: flex;
@@ -25,19 +25,21 @@
 }
 
 .home input{
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     padding: 0.5rem;
     border: none;
     border-radius: 4px;
+    font-size: 20px;
 }
 
 .home button{
     border: none;
-    padding: 0.5rem;
+    padding: 1rem;
     cursor: pointer;
     border: 1px;
     border-radius: 2px;
     background-color: rgb(213, 236, 236);
+    font-size: 20px;
 }
 .home button:hover{
     background-color: rgb(165, 206, 206);
@@ -73,6 +75,7 @@
     width: 80px;
     border: 1px solid rgb(219, 186, 186);
     background-color: rgb(213, 236, 236);
+    font-size: 20px;
 }
 .app__heading button:hover{
     background-color: rgb(134, 193, 193);
@@ -97,16 +100,19 @@
 
 .app__body__input{
     display: flex;
-    height: 5vh;
+    height: 8vh;
     
 }
 .app__body__input input{
     width: 80%;
     border: none;
+    padding: 17px;
+    font-size: 1rem;
 }
 .app__body__input button{
     border: 1px solid red;
     width: 20%;
+    font-size: 20px;
 }
 .app__body__input button:hover{
     width: 20%;
@@ -120,7 +126,8 @@
     background-color: rgb(183, 216, 236);
     margin: 3px;
     display: inline-block;
-    border-radius: 4px;
+    border-radius: 15px;
+    font-size: 1.2rem;
 }
 
 .right__display{
@@ -129,11 +136,111 @@
     justify-content: end;
 }
 
+.message__username{
+    color: rgb(43, 25, 109);
+}
+
 /* .left__display{
     border: 1px solid red;
 } */
 
+.footer{
+    /* border: 1px solid red; */
+    text-align: center;
+    font-size: small;
+    margin-bottom: 10px;
+}
 
 
+
+/* media queries */
+@media screen and (max-width: 500px) {
+    .app__inside{
+        margin-top: 10px;
+        height: 300px;
+    }
+
+    .app__heading{
+        font-size: 0.4rem;
+    }
+    .app__heading button{
+        font-size: 0.7rem;
+    }
+
+    .message__inside{
+        font-size: 0.7rem;
+    }
+
+    .app__body__input input{
+        padding: 15px;
+        font-size: 0.6rem;
+    }
+    .app__body__input button{
+        font-size: 10px;
+    }
+
+    .footer{
+        display: none;;
+    }
+}
+
+
+@media screen and (min-width: 500px ) and (max-width: 720px) {
+    .app__inside{
+        margin-top: 10px;
+        /* border: 1px solid red; */
+        height: 400px;
+    }
+
+    .app__heading{
+        font-size: 0.5rem;
+    }
+    .app__heading button{
+        font-size: 0.9rem;
+    }
+
+    .message__inside{
+        font-size: 0.9rem;
+    }
+
+    .app__body__input input{
+        padding: 17px;
+        font-size: 1rem;
+    }
+    .app__body__input button{
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 720px) and (max-width: 1000px) {
+    .app__inside{
+        margin-top: 8px;
+        height: 400px;
+    }
+
+    .app__heading{
+        font-size: 0.6rem;
+    }
+    .app__heading button{
+        font-size: 1rem;
+    }
+
+    .message__inside{
+        display: inline-block;
+        border-radius: 15px;
+        font-size: 1rem;
+    }
+
+    .app__body__input input{
+        font-size: 1rem;
+    }
+    .app__body__input button{
+        font-size: 18px;
+    }
+
+    .footer{
+        margin-bottom: 20px;
+    }
+}
 
 
