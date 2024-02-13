@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.home{
+    height: 100vh;
+    background-color: rgb(213, 237, 213);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home__inside{
+    border: 1px solid red;
+    border-radius: 2px;
+    background-color: rgb(102, 225, 236);
+    height: 200px;
+    width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home input{
+    margin-bottom: 10px;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+}
+
+.home button{
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 1px;
+    border-radius: 2px;
+    background-color: rgb(213, 236, 236);
+}
+.home button:hover{
+    background-color: rgb(165, 206, 206);
+}
+
+.app{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(213, 237, 213);
+}
+
+.app__inside{
+    width: 60%;
+    margin: auto;
+}
+
+.app__heading{
+    /* border: 1px solid rgb(111, 182, 182); */
+    padding: 10px;
+    background-color: cyan;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app__heading button{
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 80px;
+    border: 1px solid rgb(219, 186, 186);
+    background-color: rgb(213, 236, 236);
+}
+.app__heading button:hover{
+    background-color: rgb(134, 193, 193);
+}
+
+.app__body{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    /* border: 1px solid rgb(111, 182, 182); */
+    background-color: cyan;
+    border-radius: 4px;
+    border: 1px solid rgb(111, 182, 182);
+}
+
+.app__body__messages{
+    border: 1px solid rgb(111, 182, 182);
+    height: 75vh;
+    background-color:  cyan;
+    overflow-y: auto;
+}
+
+.app__body__input{
+    display: flex;
+    height: 5vh;
+    
+}
+.app__body__input input{
+    width: 80%;
+    border: none;
+}
+.app__body__input button{
+    border: 1px solid red;
+    width: 20%;
+}
+.app__body__input button:hover{
+    width: 20%;
+    background-color: rgb(134, 193, 193);
+}
+
+
+/* Message body */
+.message{
+    /* border: 1px solid red; */
+    padding: 10px;
+    background-color: rgb(183, 216, 236);
+    margin: 3px;
+}
+
+
+
+
