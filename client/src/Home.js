@@ -6,7 +6,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (username.trim() !== "") {
+    if (username && username.trim() !== "") {
       navigate("/chats", { state: { username } });
     } else {
       alert("Please enter your name");

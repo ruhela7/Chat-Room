@@ -12,16 +12,21 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
 
+  //receiving msg from server
   useEffect(() => {
     socket.on("message", (message) => {
-      //receiving msg from server
       setMessages([...messages, message]);
     });
   }, [messages]);
 
+  //sending msg to server
   const sendMessage = () => {
-    socket.emit("sendMessage", { username: username, text: messageText }); //sending msg to server
-    setMessageText("");
+    if (messageText) {
+      socket.emit("sendMessage", { username: username, text: messageText });
+      setMessageText("");
+    } else {
+      alert("Please enter a message");
+    }
   };
 
   const leaveHandler = () => {
@@ -43,6 +48,7 @@ function App() {
                 key={index}
                 username={message.username}
                 text={message.text}
+                isCurrentUser = {message.username === username}
               />
             ))}
           </div>

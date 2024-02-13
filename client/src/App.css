@@ -115,12 +115,24 @@
 
 
 /* Message body */
-.message{
-    /* border: 1px solid red; */
+.message__inside{
     padding: 10px;
     background-color: rgb(183, 216, 236);
     margin: 3px;
+    display: inline-block;
+    border-radius: 4px;
 }
+
+.right__display{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: end;
+}
+
+/* .left__display{
+    border: 1px solid red;
+} */
+
 
 
 
