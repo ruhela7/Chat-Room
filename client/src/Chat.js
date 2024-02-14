@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import Message from "./Message.js";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -12,6 +12,17 @@ function App() {
   const { username } = location.state;
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   //receiving msg from server
   useEffect(() => {
@@ -52,6 +63,7 @@ function App() {
                 isCurrentUser = {message.username === username}
               />
             ))}
+            <div ref={messagesEndRef} />
           </div>
           <div className="app__body__input">
             <input
