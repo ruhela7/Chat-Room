@@ -79,7 +79,7 @@ function App() {
             <div className="user__list">
               {
                 [...users].map((user, index) => (
-                  <div className="user__list__name" key={index}>
+                  <div className={user == username ? "user__list__curr__name" : "user__list__name"} key={index}>
                     {user}
                   </div>
                 ))}{" "}
