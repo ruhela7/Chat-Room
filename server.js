@@ -18,16 +18,28 @@ const io = socketio(server, {
 
 const PORT = 5000;
 
+let users = [];
+
 //connection setup
 io.on("connection", (socket) => {
   // console.log("New user connected");
 
+  socket.on("join", (username) => {
+    socket.username = username;
+    users.push(username);
+    console.log("All users: ", users);
+    io.emit("users", users);
+  });
+
+
   socket.on("sendMessage", (message) => {
-    io.emit("message", message); 
+    io.emit("message", message);
   });
 
   socket.on("disconnect", () => {
-    console.log("User disconnected");
+    // console.log("User disconnected");
+    users = users.filter((user) => user !== socket.username)
+    io.emit("users", users)
   });
 });
 

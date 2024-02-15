@@ -12,7 +12,8 @@ function App() {
   const { username } = location.state;
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
-  const messagesEndRef = useRef(null)
+  const [users, setUsers] = useState(new Set());
+  const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -29,7 +30,22 @@ function App() {
     socket.on("message", (message) => {
       setMessages([...messages, message]);
     });
+
   }, [messages]);
+
+  useEffect(() => {
+    socket.on("users", (users) => {
+      setUsers(new Set(users));
+    });
+
+    return () => {
+      socket.off("users");
+    };
+  }, []);
+
+  useEffect(() => {
+    socket.emit("join", username);
+  }, []);
 
   //sending msg to server
   const sendMessage = () => {
@@ -43,6 +59,10 @@ function App() {
 
   const leaveHandler = () => {
     alert("Are you sure you want to leave");
+    const updateUsers = [...users].filter((user) => user !== username);
+    console.log(updateUsers);
+    setUsers(new Set(updateUsers));
+    socket.disconnect();
     navigate("/");
   };
 
@@ -53,32 +73,44 @@ function App() {
           <h1>Welcome to Worldcup.io Chat Room</h1>
           <button onClick={leaveHandler}>Leave</button>
         </div>
-        <div className="app__body">
-          <div className="app__body__messages">
-            {messages.map((message, index) => (
-              <Message
-                key={index}
-                username={message.username}
-                text={message.text}
-                isCurrentUser = {message.username === username}
-              />
-            ))}
-            <div ref={messagesEndRef} />
+        <div className="app__container">
+          <div className="app__body__users">
+            <h3>Users Online</h3>
+            <div className="user__list">
+              {
+                [...users].map((user, index) => (
+                  <div className="user__list__name" key={index}>
+                    {user}
+                  </div>
+                ))}{" "}
+            </div>
           </div>
-          <div className="app__body__input">
-            <input
-              type="text"
-              value={messageText}
-              onChange={(e) => setMessageText(e.target.value)}
-              placeholder="Type your message..."
-            />
-            <button onClick={sendMessage}>Send</button>
+          <div className="app__body">
+            <div className="app__body__messages">
+              {messages.map((message, index) => (
+                <Message
+                  key={index}
+                  username={message.username}
+                  text={message.text}
+                  isCurrentUser={message.username === username}
+                />
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+            <div className="app__body__input">
+              <input
+                type="text"
+                value={messageText}
+                onChange={(e) => setMessageText(e.target.value)}
+                placeholder="Type your message..."
+              />
+              <button onClick={sendMessage}>Send</button>
+            </div>
           </div>
         </div>
       </div>
       <Footer />
     </div>
-    
   );
 }
 
