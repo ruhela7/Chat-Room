@@ -27,7 +27,6 @@ io.on("connection", (socket) => {
   socket.on("join", (username) => {
     socket.username = username;
     users.push(username);
-    console.log("All users: ", users);
     io.emit("users", users);
   });
 
